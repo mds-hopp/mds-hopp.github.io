@@ -155,11 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 authorsFormatted = authorsFormatted.replace(/Hopp,\s*M\.\s*D\.\s*S\./g, '<strong>Hopp, M. D. S.</strong>');
             }
             return `<div class="relative">
-                <div class="absolute -left-6 top-2 h-3 w-3 rounded-full border-2 border-white dark:border-stone-900 bg-academic-500"></div>
+                <div class="absolute -left-6 top-2 h-3 w-3 rounded-full border-2 border-white dark:border-[#0a0f15] bg-academic-500"></div>
                 <div class="keyword-tag mb-2" style="font-size:0.68rem;font-weight:700;letter-spacing:0.08em;">${pub.year}</div>
-                <h3 class="font-serif text-base font-bold text-slate-900 dark:text-gray-100 leading-snug mb-1">${pub.title}</h3>
-                <p class="text-stone-500 dark:text-stone-400 italic text-sm">${pub.venue}</p>
-                <p class="text-stone-600 dark:text-stone-300 mt-1.5 text-sm">${authorsFormatted}</p>
+                <h3 class="font-serif text-base font-bold text-slate-900 dark:text-white leading-snug mb-1">${pub.title}</h3>
+                <p class="text-stone-500 dark:text-slate-400 italic text-sm">${pub.venue}</p>
+                <p class="text-stone-600 dark:text-slate-300 mt-1.5 text-sm">${authorsFormatted}</p>
                 ${pub.link ? `
                     <a href="${pub.link}" target="_blank" rel="noopener" class="text-academic-500 hover:text-academic-600 text-xs inline-flex items-center gap-1 mt-2 font-medium">
                         ${pub.linkText || 'View'} <i class="ph ph-arrow-right" aria-hidden="true"></i>
@@ -426,10 +426,10 @@ function initHeroCanvas() {
         const isDark = document.documentElement.classList.contains('dark');
         
         // Define colors based on theme
-        const nodeColor = isDark ? 'rgba(212, 120, 77, 0.7)' : 'rgba(196, 98, 45, 0.6)';
-        const edgeColor = isDark ? 'rgba(140, 128, 116, 0.12)' : 'rgba(120, 108, 96, 0.08)';
-        const triangleColor = isDark ? 'rgba(196, 98, 45, 0.035)' : 'rgba(196, 98, 45, 0.015)';
-        const cavityColor = '196, 98, 45'; // RGB values for terracotta
+        const nodeColor = isDark ? 'rgba(251, 124, 60, 0.85)' : 'rgba(248, 97, 22, 0.65)';
+        const edgeColor = isDark ? 'rgba(140, 175, 210, 0.16)' : 'rgba(120, 108, 96, 0.08)';
+        const triangleColor = isDark ? 'rgba(248, 97, 22, 0.04)' : 'rgba(248, 97, 22, 0.015)';
+        const cavityColor = '248, 97, 22'; // RGB values for solar orange
 
         // Pulse factor for cavities
         const pulse = 0.65 + 0.35 * Math.sin(timestamp * 0.0025);
@@ -581,7 +581,7 @@ function initHeroCanvas() {
             ctx.setLineDash([]);
 
             // Draw scientific marker "H₁" (first homology generator) at the center
-            ctx.fillStyle = isDark ? `rgba(230, 221, 213, ${0.4 + 0.3 * pulse})` : `rgba(28, 24, 22, ${0.4 + 0.3 * pulse})`;
+            ctx.fillStyle = isDark ? `rgba(248, 250, 252, ${0.5 + 0.4 * pulse})` : `rgba(28, 24, 22, ${0.4 + 0.3 * pulse})`;
             ctx.font = 'italic 10px Merriweather, serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
@@ -611,7 +611,7 @@ function initHeroCanvas() {
         // Filtration threshold ε at the pointer: a faint vertical guide plus a
         // prominent readout that follows the cursor (no coordinates).
         if (mouse.active) {
-            ctx.strokeStyle = isDark ? 'rgba(212, 120, 77, 0.20)' : 'rgba(196, 98, 45, 0.18)';
+            ctx.strokeStyle = isDark ? 'rgba(248, 97, 22, 0.30)' : 'rgba(248, 97, 22, 0.22)';
             ctx.lineWidth = 1;
             ctx.setLineDash([2, 6]);
             ctx.beginPath();
@@ -630,8 +630,8 @@ function initHeroCanvas() {
             if (bx + bw > width) bx = mouse.x - bw - 16;
             if (by < 0) by = mouse.y + 16;
 
-            ctx.fillStyle = isDark ? 'rgba(36, 32, 30, 0.92)' : 'rgba(255, 255, 255, 0.92)';
-            ctx.strokeStyle = isDark ? 'rgba(212, 120, 77, 0.5)' : 'rgba(196, 98, 45, 0.5)';
+            ctx.fillStyle = isDark ? 'rgba(10, 15, 21, 0.95)' : 'rgba(255, 255, 255, 0.92)';
+            ctx.strokeStyle = isDark ? 'rgba(248, 97, 22, 0.6)' : 'rgba(248, 97, 22, 0.5)';
             ctx.lineWidth = 1;
             ctx.beginPath();
             if (ctx.roundRect) {
@@ -642,7 +642,7 @@ function initHeroCanvas() {
             ctx.fill();
             ctx.stroke();
 
-            ctx.fillStyle = isDark ? '#d4784d' : '#a34e20';
+            ctx.fillStyle = isDark ? '#fb7c3c' : '#b83b05';
             ctx.textAlign = 'left';
             ctx.textBaseline = 'middle';
             ctx.fillText(label, bx + 10, by + bh / 2);
